@@ -3,13 +3,12 @@ from timeit import Timer
 
 def memoize(func):
     memoized_results = {}
+
     def wrapper(*args):
-        if memoized_results.has_key(args):
-            return memoized_results[args]
-        else:
-            result = func(*args)
-            memoized_results[args] = result
-            return result
+        if args not in memoized_results:
+            memoized_results[args] = func(*args)
+        return memoized_results[args]
+            
     return wrapper
 
 
@@ -82,3 +81,6 @@ def time_impls():
         t = Timer(solver)
         assert solver(), 4613732
         print "%d runs of %s solved in %f seconds" % (runs, solver.__name__, t.timeit(number=1000))
+
+if __name__ == '__main__':
+    time_impls()
