@@ -27,13 +27,11 @@ def fib_generator():
     last = 1
     curr = 2 
     yield last
-    yield curr
 
     while True:
+        yield curr
         next = curr + last
-        yield next
-        last = curr
-        curr = next
+        last, curr = curr, next
 
 
 def fib_generator_recursive(curr=2, prev=1):
@@ -79,7 +77,7 @@ def time_impls():
     solvers = [p2_recursive, p2_iterative_generator, p2_recursive_generator, p2_primitve]
     for solver in solvers:
         t = Timer(solver)
-        assert solver(), 4613732
+        assert solver() == 4613732
         print "%d runs of %s solved in %f seconds" % (runs, solver.__name__, t.timeit(number=1000))
 
 if __name__ == '__main__':
