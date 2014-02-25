@@ -15,6 +15,7 @@ class TestP5(unittest.TestCase):
 		self.assertEqual(232792560, smallest_multiple_of(range(1,21)))
 
 def gcd(a, b):
+	# Euclid's algorithm
 	while b:
 		a, b = b, a % b
 	return a
@@ -30,8 +31,7 @@ def smallest_multiple_of(nums):
 	else:
 		a = nums.pop()
 		b = nums.pop()
-		c = lcm(a,b)
-		nums.append(c)
+		nums.append(lcm(a,b))
 		return smallest_multiple_of(nums)
 
 
