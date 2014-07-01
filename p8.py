@@ -22,7 +22,7 @@ NUM = """73167176531330624919225119674426574742355349194934
 
 
 def solve_p8():
-    options = [NUM[i:i+5] for i in range(len(NUM)-4)]
+    options = [NUM[i:i+13] for i in range(len(NUM)-12)]
     return max([reduce(lambda x, y: int(x)*int(y), option) for option in options])
 
 if __name__ == '__main__':
