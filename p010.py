@@ -6,7 +6,20 @@ def is_prime(x):
     return True
 
 def solve_p10():
-    return sum([x for x in xrange(2, 2000000) if is_prime(x)])
+    return 2 + sum([x for x in xrange(3, 2000000, 2) if is_prime(x)])
+
+def solve_p10_sieve():
+    total = set(range(2,2000000))
+    x = 0
+    curr = 2
+
+    while curr < int(math.sqrt(2000000))+1:
+        for composite in xrange(2*curr, 2000000, curr):
+            total.discard(composite)
+        x = x + 1
+        curr = sorted(list(total))[x]
+    return sum(total)
+
 
 if __name__ == '__main__':
-    print solve_p10()
+    print solve_p10_sieve()
