@@ -9,15 +9,17 @@ def solve_p10():
     return 2 + sum([x for x in xrange(3, 2000000, 2) if is_prime(x)])
 
 def solve_p10_sieve():
-    total = set(range(2,2000000))
+    total = range(2,2000000)
     x = 0
     curr = 2
 
     while curr < int(math.sqrt(2000000))+1:
         for composite in xrange(2*curr, 2000000, curr):
-            total.discard(composite)
+            total[composite-2] = 0 
         x = x + 1
-        curr = sorted(list(total))[x]
+        while total[x] == 0:
+            x = x+1
+        curr = total[x]
     return sum(total)
 
 
