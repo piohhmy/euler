@@ -1,27 +1,35 @@
 import math
-def is_prime(x):
-    for y in range(2,int(math.sqrt(x)) + 1):
-        if x % y == 0:
-            return False
-    return True
+from timeit import Timer
 
-def solve_p10():
-    return 2 + sum([x for x in xrange(3, 2000000, 2) if is_prime(x)])
 
 def solve_p10_sieve():
-    total = range(2,2000000)
-    x = 0
-    curr = 2
+    return sum(sieve_primes_up_to(2000000))
 
-    while curr < int(math.sqrt(2000000))+1:
-        for composite in xrange(2*curr, 2000000, curr):
-            total[composite-2] = 0 
-        x = x + 1
-        while total[x] == 0:
-            x = x+1
-        curr = total[x]
-    return sum(total)
+def sieve_primes_up_to(num):
+    num_list = range(num)
+    num_list[1] = 0 # cross out 1, special case
+    i = 2
 
+    while num_list[i] <= int(math.sqrt(num))+1:
+        cross_out_composite_multiples(num_list[i], num_list)
+        i = next_non_crossed_out_index(i, num_list)
+
+    return filter(lambda x: x != 0, num_list)
+
+def cross_out_composite_multiples(multiple, num_list):
+    for composite in xrange(multiple*2, len(num_list), multiple):
+        num_list[composite] = 0 
+
+def next_non_crossed_out_index(i, num_list):
+    increment_index = True
+    while increment_index:
+        i += 1
+        increment_index = num_list[i] == 0
+    return i
 
 if __name__ == '__main__':
+    sieve_timer = Timer(solve_p10_sieve)
+    print sieve_timer.timeit(1)
+
     print solve_p10_sieve()
+
