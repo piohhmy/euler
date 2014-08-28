@@ -60,11 +60,11 @@ def test_collatz_13():
 
 def solve_p014():
     collatz_lengths = [len(collatz_recursive(i)) for i in xrange(1,1000000)]
-    return collatz_lengths.index(max(collatz_lengths))
+    return collatz_lengths.index(max(collatz_lengths)) + 1
 
 def solve_p014_it():
     collatz_lengths = [len(collatz_iterative_memoized(i)) for i in xrange(1,1000000)]
-    return collatz_lengths.index(max(collatz_lengths))
+    return collatz_lengths.index(max(collatz_lengths)) + 1
 
 if __name__ == '__main__':
-    print solve_p014()
+    print solve_p014_it()
