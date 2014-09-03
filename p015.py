@@ -39,7 +39,7 @@ def memoize(func):
     return wrapper
 
 def generate_nodes(xmax,ymax):
-    return [Node(x,y) for x in range(xmax) for y in range(ymax)]
+    return [Node(x,y) for x in range(xmax+1) for y in range(ymax+1)]
 
 class Grid(object):
     def __init__(self):
@@ -48,15 +48,15 @@ class Grid(object):
     def find_routes(self, start_coor, end_coor):
         start_node = self.find_node(start_coor)
         end_node = self.find_node(end_coor)
-        # check both exist
 
+        if start_node == None or end_node == None:
+            return None
         return self._route(start_node, end_node)
 
     def find_node(self, coor):
         for node in self.nodes:
             if node.x == coor[0] and node.y == coor[1]:
                 return node
-
 
     @memoize 
     def _route(self, start, end):
@@ -104,7 +104,7 @@ class Node(object):
         return "Node({0}, {1})".format(self.x, self.y)
 
 def solve_p015():
-    nodes = generate_nodes(21,21)
+    nodes = generate_nodes(20,20)
     grid = Grid()
     for node in nodes:
         grid.add(node)
