@@ -8,6 +8,7 @@ NOTE: Do not count spaces or hyphens. For example, 342 (three hundred and forty-
 """
 
 singles = {1:"one", 2:"two", 3:"three", 4:"four", 5:"five", 6:"six", 7:"seven", 8:"eight", 9:"nine"}
+tensomethings = {10: "ten", 11:"eleven", 12:"twelve", 13:"thirteen", 14:"fourteen", 15:"fifteen", 16:"sixteen", 17:"seventeen", 18:"eighteen", 19:"nineteen"}
 tens = {11:"eleven", 12:"twelve", 13:"thirteen", 14:"fourteen", 15:"fifteen", 16:"sixteen", 17:"seventeen", 18:"eighteen", 19:"nineteen"}
 doubles = {10:"ten", 20:"twenty", 30:"thirty", 40:"forty", 50:"fifty", 60:"sixty", 70:"seventy",80:"eighty", 90:"ninety"}
 
@@ -15,34 +16,44 @@ from nose.tools import *
 from nose_parameterized import parameterized
 
 def write_num(num):
-    if num < 100:
-        return write_1_thru_99(num)
-    elif num  % 100 == 0 and num < 1000:
-        hundred = int(str(num)[0])
-        return singles[hundred] + " hundred"
-    elif num < 1000:
-        hundred = int(str(num)[0])
-        double = int(str(num)[1:])
-        return singles[hundred] + " hundred and " + write_1_thru_99(double)
+    digits = len(str(num))
+    if digits == 1:
+        return convert_single_digit(num)
+    elif digits == 2:
+        return convert_double_digits(num)
+    elif digits == 3:
+        return convert_triple_digits(num)
     elif num == 1000:
         return "one thousand"
     else:
         raise ValueError(num)
 
-def write_1_thru_99(num):
-    if num <= 0 or num >= 100:
+def convert_single_digit(num):
+    if num < 1 or num > 9:
         raise ValueError(num)
-    if num < 10: 
-        return singles[num]
-    elif num < 20 and num > 10:
-        return tens[num]
+    return singles[num]
 
-    ten = int(str(num)[0]) * 10
-    one = int(str(num)[1])
-    if num % 10 == 0:
-        return doubles[ten]
+def convert_double_digits(num):
+    if num < 10 or num > 99:
+        raise ValueError(num)
+
+    if num < 20:
+        return tensomethings[num]
     else:
-        return doubles[ten] + " " + singles[one]
+        ones_digit = num % 10
+        if ones_digit == 0:
+            return doubles[num]
+        else:
+            return doubles[(num/10)*10] + " " + write_num(ones_digit)
+
+def convert_triple_digits(num):
+    hundreds_digit = num % 100
+    if hundreds_digit == 0:
+        return write_num(num/100) + " hundred"
+    else:
+        double = int(str(num)[1:])
+        return write_num(num/100) + " hundred and " + write_num(double)
+
 
 def solve_p17():
     written_nums = [write_num(x) for x in xrange(1,1001)]
