@@ -11,7 +11,7 @@ What is the millionth lexicographic permutation of the digits
 import itertools
 
 def solve_p024():
-    permutations = itertools.permutations((0,1,2,3,4,5,6,7,8,9), 10)
+    permutations = itertools.permutations(range(0,10), 10)
     return reduce(lambda x,y: str(x) + str(y), list(permutations)[999999] )
 
 if __name__ == '__main__':
