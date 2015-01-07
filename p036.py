@@ -1,8 +1,6 @@
 def is_palindrome(text):
-    for i in xrange(len(text)//2):
-        if text[i] != text[-i-1]:
-            return False
-    return True
+    if text == text[::-1]:
+        return True
 
 def find_double_base_palindromes(limit):
     for num in xrange(1, limit):
