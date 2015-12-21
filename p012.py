@@ -10,7 +10,7 @@ def triangle_iter():
         yield total
 
 def find_divisors(num):
-    divisors = set(i for i in xrange(1, int(math.sqrt(num)+1)) if num%i == 0)
+    divisors = set(i for i in range(1, int(math.sqrt(num)+1)) if num%i == 0)
     divisors.update(set(num/i for i in divisors))
     return divisors
 
@@ -31,7 +31,7 @@ def find_first_triangle_w_500_divisors():
 def test_triangle_numbers(input, expected_output):
     it = triangle_iter()
     for i in range(input):
-        actual_output = it.next()
+        actual_output = next(it)
 
     assert_equal(actual_output, expected_output)
 
@@ -45,4 +45,4 @@ def test_find_divisors(input, expected_output):
 
 
 if __name__ == '__main__':
-    print find_first_triangle_w_500_divisors()
+    print(find_first_triangle_w_500_divisors())

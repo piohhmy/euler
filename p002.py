@@ -46,16 +46,16 @@ def fib_generator_recursive(curr=2, prev=1):
 
 
 def fibs_less_than(max):
-    return itertools.takewhile(lambda x: x < max, itertools.imap(fib_finder, itertools.count(1)))
+    return itertools.takewhile(lambda x: x < max, map(fib_finder, itertools.count(1)))
 
 def p2_recursive():
-    return sum(filter(lambda x: x % 2 == 0, fibs_less_than(4000000)))
+    return sum([x for x in fibs_less_than(4000000) if x % 2 == 0])
 
 def p2_iterative_generator():
-    return sum(filter(lambda x: x % 2 == 0, itertools.takewhile(lambda x: x < 4000000, fib_generator())))  
+    return sum([x for x in itertools.takewhile(lambda x: x < 4000000, fib_generator()) if x % 2 == 0])  
 
 def p2_recursive_generator():
-    return sum(filter(lambda x: x % 2 == 0, itertools.takewhile(lambda x: x < 4000000, fib_generator_recursive())))  
+    return sum([x for x in itertools.takewhile(lambda x: x < 4000000, fib_generator_recursive()) if x % 2 == 0])  
 
 def p2_primitve():
     x = 1
@@ -78,7 +78,7 @@ def time_impls():
     for solver in solvers:
         t = Timer(solver)
         assert solver() == 4613732
-        print "%d runs of %s solved in %f seconds" % (runs, solver.__name__, t.timeit(number=1000))
+        print("%d runs of %s solved in %f seconds" % (runs, solver.__name__, t.timeit(number=1000)))
 
 if __name__ == '__main__':
     time_impls()

@@ -1,10 +1,9 @@
 def sum_of_digits_raised(num, power):
-    return sum(map(lambda x: int(x)**power, str(num)))
+    return sum([int(x)**power for x in str(num)])
 
 def solve_p030():
-    return  sum(filter(lambda num: sum_of_digits_raised(num, 5) == num,
-                       xrange(2, 1000000)))
+    return  sum([num for num in range(2, 1000000) if sum_of_digits_raised(num, 5) == num])
 
 if __name__ == '__main__':
-    print solve_p030()
+    print(solve_p030())
 

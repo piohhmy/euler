@@ -25,10 +25,10 @@ def has_amicable_pair(num):
         return True
 
 def divisors_of(num):
-    return set([i for i in xrange(1, num//2+2) if num%i==0])
+    return set([i for i in range(1, num//2+2) if num%i==0])
 
 def solve_p21():
-    return sum([num for num in xrange(1,10001) if has_amicable_pair(num)])
+    return sum([num for num in range(1,10001) if has_amicable_pair(num)])
 
 if __name__ == '__main__':
-    print solve_p21()
+    print(solve_p21())

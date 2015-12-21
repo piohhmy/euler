@@ -59,12 +59,12 @@ def test_collatz_13():
     assert_equal((13,40,20,10,5,16,8,4,2,1), collatz_iterative(13))
 
 def solve_p014():
-    collatz_lengths = [len(collatz_recursive(i)) for i in xrange(1,1000000)]
+    collatz_lengths = [len(collatz_recursive(i)) for i in range(1,1000000)]
     return collatz_lengths.index(max(collatz_lengths)) + 1
 
 def solve_p014_it():
-    collatz_lengths = [len(collatz_iterative_memoized(i)) for i in xrange(1,1000000)]
+    collatz_lengths = [len(collatz_iterative_memoized(i)) for i in range(1,1000000)]
     return collatz_lengths.index(max(collatz_lengths)) + 1
 
 if __name__ == '__main__':
-    print solve_p014_it()
+    print(solve_p014_it())

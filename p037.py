@@ -27,4 +27,4 @@ def solve_p037():
     return sum(itertools.islice(truncatable_prime_generator(), 11))
 
 if __name__ == '__main__':
-    print(solve_p037())
+    print((solve_p037()))

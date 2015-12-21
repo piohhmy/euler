@@ -3,16 +3,16 @@ import itertools
 
 class TestP5(unittest.TestCase):
 	def test_1_for_1(self):
-		self.assertEqual(1, smallest_multiple_of(range(1,2)))
+		self.assertEqual(1, smallest_multiple_of(list(range(1,2))))
 
 	def test_2_for_1_thru_2(self):
-		self.assertEqual(2, smallest_multiple_of(range(1,3)))
+		self.assertEqual(2, smallest_multiple_of(list(range(1,3))))
 
 	def test_2520_for_1_thru_10(self):
-		self.assertEqual(2520, smallest_multiple_of(range(1,11)))
+		self.assertEqual(2520, smallest_multiple_of(list(range(1,11))))
 
 	def test_232792560_for_1_thru_20(self):
-		self.assertEqual(232792560, smallest_multiple_of(range(1,21)))
+		self.assertEqual(232792560, smallest_multiple_of(list(range(1,21))))
 
 def gcd(a, b):
 	# Euclid's algorithm
@@ -44,5 +44,5 @@ def brute_smallest_multiple_of(nums):
 
 
 if __name__ == '__main__':
-	print smallest_multiple_of(range(1,21))
+	print(smallest_multiple_of(list(range(1,21))))
 	unittest.main()

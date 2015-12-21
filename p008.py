@@ -1,3 +1,4 @@
+from functools import reduce
 NUM = """73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
 85861560789112949495459501737958331952853208805511
@@ -26,6 +27,6 @@ def solve_p8():
     return max([reduce(lambda x, y: int(x)*int(y), option) for option in options])
 
 if __name__ == '__main__':
-    print solve_p8()
+    print(solve_p8())
 
 

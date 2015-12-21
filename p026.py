@@ -31,8 +31,8 @@ import operator
 getcontext().rounding = ROUND_DOWN
 
 def solve_p26():
-    repeating_cycles = {d: len(repeating_cycle_of_fraction(d)) for d in xrange(1,1001)}
-    divisor_w_longest_cycle, period = max(repeating_cycles.items(), key=operator.itemgetter(1))
+    repeating_cycles = {d: len(repeating_cycle_of_fraction(d)) for d in range(1,1001)}
+    divisor_w_longest_cycle, period = max(list(repeating_cycles.items()), key=operator.itemgetter(1))
     return divisor_w_longest_cycle
 
 
@@ -41,11 +41,11 @@ def repeating_cycle_of_fraction(divisor):
     result = str(1/Decimal(divisor))
     repeatingcycle = result[divisor+2:]
 
-    for x in xrange(2, len(repeatingcycle), 2):
+    for x in range(2, len(repeatingcycle), 2):
         substr = repeatingcycle[:x]
-        if substr[:x/2] == substr[x/2:]:
-            if is_cyclic(substr[:x/2], repeatingcycle):
-                return substr[:x/2]
+        if substr[:x//2] == substr[x//2:]:
+            if is_cyclic(substr[:x//2], repeatingcycle):
+                return substr[:x//2]
     return ""
 
 def is_cyclic(cycle, word):
@@ -54,10 +54,10 @@ def is_cyclic(cycle, word):
     cycle_start = word.index(cycle)
 
     c = itertools.cycle(cycle)
-    forward = all(n == c.next() for n in word[cycle_start:])
+    forward = all(n == next(c) for n in word[cycle_start:])
 
     rev_c = itertools.cycle(cycle[::-1])
-    backward = all(n == rev_c.next() for n in word[:cycle_start][::-1])
+    backward = all(n == next(rev_c) for n in word[:cycle_start][::-1])
 
     return forward and backward
 
@@ -82,7 +82,7 @@ def test_dec_period(expected, divisor):
 
 
 def m_order(a, n):
-    return next(k for k in xrange(1,n) if a**k % n == 1)
+    return next(k for k in range(1,n) if a**k % n == 1)
 
 def test_order_of_4_modulo_7():
     assert_equal(3, m_order(4,7))

@@ -4,7 +4,7 @@ import math
 
 
 def is_prime(num):
-    return all(num % x != 0 for x in xrange(2, int(math.sqrt(num)+1)))
+    return all(num % x != 0 for x in range(2, int(math.sqrt(num)+1)))
 
 def prime_generator():
     return (num for num in itertools.count(2) if is_prime(num))
@@ -19,6 +19,6 @@ class TestP7(unittest.TestCase):
 if __name__ == '__main__':
 	import time
 	start = time.time()
-	print calc_prime(10001)
-	print "total secs: %f" % (time.time() - start)
+	print(calc_prime(10001))
+	print("total secs: %f" % (time.time() - start))
 	unittest.main()

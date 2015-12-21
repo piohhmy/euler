@@ -26,4 +26,4 @@ def solve_p22():
     return total
 
 if __name__ == '__main__':
-    print solve_p22()
+    print(solve_p22())

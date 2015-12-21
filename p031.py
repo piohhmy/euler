@@ -14,4 +14,4 @@ def solve_p030():
     return count_combos(coins, 200)
 
 if __name__ == '__main__':
-    print solve_p030()
+    print(solve_p030())

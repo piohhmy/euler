@@ -2,7 +2,7 @@ def concat_multiples(num, multiples):
     return int("".join([str(num*multiple) for multiple in range(1,multiples+1)]))
 
 def is_pandigital(num):
-    return sorted([int(digit) for digit in str(num)]) == range(1,10):
+    return sorted([int(digit) for digit in str(num)]) == list(range(1,10))
     
 
 def solve_p038():
@@ -17,4 +17,4 @@ def solve_p038():
     return max([num for num in all_concats if is_pandigital(num)])
 
 if __name__ == '__main__':
-    print(solve_p038())
+    print((solve_p038()))

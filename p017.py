@@ -56,7 +56,7 @@ def convert_triple_digits(num):
 
 
 def solve_p17():
-    written_nums = [write_num(x) for x in xrange(1,1001)]
+    written_nums = [write_num(x) for x in range(1,1001)]
     return len(reduce(lambda x,y: x + y, written_nums).replace(" ", ""))
 # Tests
 
@@ -78,4 +78,4 @@ def test_write_num(num, expected):
     assert_equal(expected, write_num(num))
 
 if __name__ == '__main__':
-    print solve_p17()
+    print(solve_p17())

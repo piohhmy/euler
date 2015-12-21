@@ -9,10 +9,11 @@ What is the millionth lexicographic permutation of the digits
 """
 
 import itertools
+from functools import reduce
 
 def solve_p024():
-    permutations = itertools.permutations(range(0,10), 10)
+    permutations = itertools.permutations(list(range(0,10)), 10)
     return reduce(lambda x,y: str(x) + str(y), list(permutations)[999999] )
 
 if __name__ == '__main__':
-    print solve_p024()
+    print(solve_p024())

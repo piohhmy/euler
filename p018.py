@@ -61,7 +61,7 @@ def test_example_tri_is_23():
 
 def split_tri_string(tri):
   tri_lines = tri.strip().splitlines()
-  return [map(int, line.split()) for line in tri_lines]
+  return [list(map(int, line.split())) for line in tri_lines]
 
 def solve_p018(tri=full_tri):
   tri = split_tri_string(tri) 

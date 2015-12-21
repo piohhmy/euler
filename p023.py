@@ -18,13 +18,13 @@ import math
 
 
 def solve_p023():
-    abundants = filter(is_abundant, xrange(1,28124))
+    abundants = list(filter(is_abundant, range(1,28124)))
     abundant_combos = itertools.combinations_with_replacement(abundants, 2)
     abundant_sums = {sum(combo) for combo in abundant_combos}
-    return sum([i for i in xrange(1, 28124) if i not in abundant_sums])
+    return sum([i for i in range(1, 28124) if i not in abundant_sums])
 
 def find_divisors(num):
-    divisors = {i for i in xrange(1, int(math.sqrt(num)+1)) if num%i == 0}
+    divisors = {i for i in range(1, int(math.sqrt(num)+1)) if num%i == 0}
     divisors.update({num/divisor for divisor in divisors})
     divisors.discard(num)
     return divisors
@@ -44,5 +44,5 @@ def test_12_is_abundant():
     assert_true(is_abundant(12))
 
 if __name__ == '__main__':
-    print solve_p023()
+    print(solve_p023())
     

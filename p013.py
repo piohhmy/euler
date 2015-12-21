@@ -100,5 +100,5 @@ numbers_str = """37107287533902102798797998220837590246510135740250
 53503534226472524250874054075591789781264330331690"""
 
 numbers = [int(num) for num in numbers_str.split()]
-print str(sum(numbers))[0:10]
+print(str(sum(numbers))[0:10])
 

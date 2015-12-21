@@ -112,4 +112,4 @@ def solve_p015():
     return grid.find_routes((0,0), (20,20))
 
 if __name__ == '__main__':
-    print solve_p015()
+    print(solve_p015())

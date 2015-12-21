@@ -10,4 +10,4 @@ def solve_p026():
     return sum(spiral_corners(1001))
 
 if __name__ == '__main__':
-    print solve_p026()
+    print(solve_p026())

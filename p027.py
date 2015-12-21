@@ -15,11 +15,11 @@ def memoize(func):
 def is_prime(num):
     if num < 0:
         return False
-    return not any((num%x==0 for x in xrange(2, int(num**.5)+1)))
+    return not any((num%x==0 for x in range(2, int(num**.5)+1)))
 
 def quadratic_generator(a_limit, b_limit):
-    for a in xrange(-a_limit+1, a_limit):
-        for b in xrange(-b_limit+1, b_limit):
+    for a in range(-a_limit+1, a_limit):
+        for b in range(-b_limit+1, b_limit):
             yield (lambda n : n**2 + a*n + b, a, b)
 
 def solve_p027():
@@ -34,5 +34,5 @@ def solve_p027():
     return answer
 
 if __name__ == '__main__':
-    print solve_p027()
+    print(solve_p027())
 

@@ -1,6 +1,6 @@
 def find_digit_canceling_fractions():
-    for numerator in xrange(10,100):
-        for denominator in xrange(10,100):
+    for numerator in range(10,100):
+        for denominator in range(10,100):
             for num_digit in str(numerator):
                 for denom_digit in str(denominator):
                     if num_digit == denom_digit and "0" not in str(denominator) and numerator/float(denominator) < 1:
@@ -31,4 +31,4 @@ def solve_p033():
 
 
 if __name__ == '__main__':
-    print solve_p033()
+    print(solve_p033())

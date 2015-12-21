@@ -28,8 +28,8 @@ def is_sunday(days_post_jan_1_1901):
 def sunday_as_first_of_month_from_1901_2000():
     total_days = 1
     sundays = 0
-    for year in xrange(1901, 2001):
-        for month in xrange(1, 13):
+    for year in range(1901, 2001):
+        for month in range(1, 13):
             total_days += days_in(year, month)
             if is_sunday(total_days):
                 sundays +=1

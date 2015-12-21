@@ -3,7 +3,7 @@ def is_palindrome(text):
         return True
 
 def find_double_base_palindromes(limit):
-    for num in xrange(1, limit):
+    for num in range(1, limit):
         base2 = format(num, 'b')
         base10 = str(num)
         if is_palindrome(base2) and is_palindrome(base10):
@@ -13,5 +13,5 @@ def solve_p036():
     return sum(find_double_base_palindromes(1000000))
 
 if __name__ == '__main__':
-    print solve_p036()
+    print(solve_p036())
 

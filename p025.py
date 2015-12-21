@@ -16,4 +16,4 @@ def fib_generator():
         prev, curr = curr, prev + curr
 
 if __name__ == '__main__':
-    print solve_p025()
+    print(solve_p025())

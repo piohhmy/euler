@@ -9,5 +9,5 @@ def solve_p9():
 
 
 if __name__ == '__main__':
-    print solve_p9()
+    print(solve_p9())
 
