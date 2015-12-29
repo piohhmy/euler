@@ -18,11 +18,13 @@ def solve_p040():
     numbers = [find_champernowne_for(x) for x in (1,10,100,1000,10000,100000)]
     return reduce(operator.mul, numbers)
 
-def build_champernowne():
+def build_champernowne(limit):
     c = ''
-    for x in count(1):
-        c += repr(x)
-        yield c
+    x = 1
+    while len(c) < limit:
+        c += str(x)
+        x +=1
+    return c
 
 def build_up_to(builder, limit):
     a = ''
@@ -32,7 +34,6 @@ def build_up_to(builder, limit):
             return a
 
 def solve_p040_slow():
-    builder = build_champernowne()
-    a = build_up_to(builder, 1000000)
+    a = build_champernowne(1000000)
     return int(a[0]) * int(a[9]) * int(a[99]) * int(a[999]) * int(a[9999]) * int(a[99999]) * int(a[999999])
 
