@@ -16,21 +16,19 @@ class PrimeLazySolver():
         for i in itertools.count(2):
             if not next((s for s in range(2, int(i**.5)+1) if i % s == 0), None):
                 yield i
-                
-
-def has_factors(num, primes, factor_count):
-    factors = (prime for prime in primes if num%prime == 0)
-    first_n_factors = list(next(factors, None) for i in range(factor_count))
-    return all(first_n_factors)
-
-def is_prime_factor_seq(num, solver, seq_len):
-    return all(has_factors(num+i, solver.primes_up_to(num//2+1), seq_len) for i in range(seq_len))
 
 
 def solve_p047():
     solver = PrimeLazySolver()
-    for n in itertools.count(1):
-        if is_prime_factor_seq(n, solver, 4):
-            return n
-            
-    
+    limit = 1000000
+    nums = [0] * limit
+    seq_length = 4
+    for prime in solver.primes_up_to(limit):
+        multiplier = 2
+        while prime * multiplier < limit:
+            nums[prime * multiplier] += 1
+            multiplier += 1
+
+    for i, num in enumerate(nums):
+        if all(nums[i + x] >= seq_length for x in range(1, seq_length + 1)):
+            return i + 1
